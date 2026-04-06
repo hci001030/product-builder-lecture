@@ -1,51 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animal Face Test (Dog vs Cat)</title>
+    <title>동물상 테스트 | Animal Face Test</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <button id="theme-toggle">Dark Mode</button>
+        <button id="theme-toggle">다크 모드 | Dark Mode</button>
         
-        <h1>Animal Face Test</h1>
-        <p>Are you a Dog or a Cat face?</p>
+        <header>
+            <h1>🐶 동물상 테스트 🐱</h1>
+            <p class="subtitle">나는 어떤 동물과 닮았을까?</p>
+            <p class="subtitle-en">What animal do I look like?</p>
+        </header>
         
-        <div class="test-section">
-            <button type="button" id="start-btn">Start Test</button>
-            <div id="webcam-container"></div>
-            <div id="label-container"></div>
-        </div>
+        <main class="test-section">
+            <div class="button-group">
+                <button type="button" id="start-btn" class="main-btn">카메라로 시작 | Start with Webcam</button>
+                <label for="upload-input" class="main-btn upload-label">
+                    사진 업로드 | Upload Photo
+                    <input type="file" id="upload-input" accept="image/*" style="display: none;">
+                </label>
+            </div>
 
-        <hr>
+            <div id="loading-spinner" class="spinner" style="display: none;"></div>
+            
+            <div id="image-container">
+                <div id="webcam-container"></div>
+                <img id="uploaded-image" src="#" alt="uploaded image" style="display: none;">
+            </div>
 
-        <div class="contact-form">
-            <h2>Partnership Inquiry</h2>
-            <form action="https://formspree.io/f/mvzvdllk" method="POST">
-                <input type="email" name="email" placeholder="Your email address" required>
-                <textarea name="message" placeholder="Your message" required></textarea>
-                <button type="submit">Submit Inquiry</button>
-            </form>
-        </div>
+            <div id="label-container">
+                <!-- Predictions will be injected here -->
+            </div>
 
-        <hr>
+            <button id="reset-btn" class="secondary-btn" style="display: none;">다시 하기 | Try Again</button>
+        </main>
 
-        <div id="disqus_thread"></div>
-        <script>
-            (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://productbuilder-8jbmlzrczj.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <section class="info-section">
+            <hr>
+            <div class="contact-form">
+                <h2>협업 문의 | Partnership Inquiry</h2>
+                <form action="https://formspree.io/f/mvzvdllk" method="POST">
+                    <input type="email" name="email" placeholder="이메일 | Email" required>
+                    <textarea name="message" placeholder="메시지 | Message" required></textarea>
+                    <button type="submit">보내기 | Submit</button>
+                </form>
+            </div>
+
+            <hr>
+
+            <div id="disqus_thread"></div>
+        </section>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
+    <script>
+        (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = 'https://productbuilder-8jbmlzrczj.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
 </body>
 </html>
