@@ -4,6 +4,8 @@
     --text-color: #000;
     --number-bg: #eee;
     --shadow: rgba(0, 0, 0, 0.1);
+    --input-bg: #fff;
+    --input-border: #ddd;
 }
 
 body.dark-mode {
@@ -12,6 +14,8 @@ body.dark-mode {
     --text-color: #ffffff;
     --number-bg: #333;
     --shadow: rgba(255, 255, 255, 0.1);
+    --input-bg: #2d2d2d;
+    --input-border: #444;
 }
 
 body {
@@ -21,7 +25,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -34,6 +38,7 @@ body {
     box-shadow: 0 0 10px var(--shadow);
     position: relative;
     transition: background-color 0.3s, box-shadow 0.3s;
+    width: 400px;
 }
 
 h1 {
@@ -68,6 +73,7 @@ h1 {
     background-color: #4CAF50;
     color: white;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 #theme-toggle {
@@ -87,4 +93,50 @@ h1 {
 #theme-toggle:hover {
     background-color: var(--text-color);
     color: var(--container-bg);
+}
+
+hr {
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid var(--input-border);
+}
+
+.contact-form h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-family: inherit;
+}
+
+.contact-form textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.contact-form button {
+    padding: 10px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.contact-form button:hover {
+    background-color: #1976D2;
 }
