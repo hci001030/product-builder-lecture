@@ -5,13 +5,13 @@ const body = document.body;
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
     body.classList.add('dark-mode');
-    themeToggle.textContent = '라이트 모드 | Light Mode';
+    themeToggle.textContent = '라이트 모드';
 }
 
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
     const isDarkMode = body.classList.contains('dark-mode');
-    themeToggle.textContent = isDarkMode ? '라이트 모드 | Light Mode' : '다크 모드 | Dark Mode';
+    themeToggle.textContent = isDarkMode ? '라이트 모드' : '다크 모드';
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
 });
 
@@ -28,6 +28,7 @@ const labelContainer = document.getElementById('label-container');
 const resetBtn = document.getElementById('reset-btn');
 const loadingSpinner = document.getElementById('loading-spinner');
 const buttonGroup = document.querySelector('.button-group');
+const placeholderText = document.getElementById('placeholder-text');
 
 // Load the model
 async function loadModel() {
@@ -45,10 +46,11 @@ async function initWebcam() {
     await loadModel();
     buttonGroup.style.display = 'none';
     resetBtn.style.display = 'inline-block';
+    placeholderText.style.display = 'none';
     isWebcamMode = true;
 
     const flip = true; 
-    webcam = new tmImage.Webcam(280, 280, flip); 
+    webcam = new tmImage.Webcam(300, 300, flip); 
     await webcam.setup(); 
     await webcam.play();
     window.requestAnimationFrame(loop);
@@ -71,6 +73,7 @@ uploadInput.addEventListener('change', async (e) => {
         await loadModel();
         buttonGroup.style.display = 'none';
         resetBtn.style.display = 'inline-block';
+        placeholderText.style.display = 'none';
         isWebcamMode = false;
 
         const reader = new FileReader();
@@ -79,7 +82,6 @@ uploadInput.addEventListener('change', async (e) => {
             uploadedImage.style.display = 'block';
             webcamContainer.style.display = 'none';
             
-            // Wait for image to load before predicting
             uploadedImage.onload = async () => {
                 await predict(uploadedImage);
             };
@@ -94,7 +96,6 @@ async function predict(imageElement) {
     
     labelContainer.innerHTML = '';
     
-    // Find the highest prediction for a special message
     let highest = { className: '', probability: 0 };
     
     for (let i = 0; i < maxPredictions; i++) {
@@ -104,28 +105,14 @@ async function predict(imageElement) {
         }
 
         let className = "";
-        let colorClass = "";
+        let colorVar = "";
         
         switch(p.className) {
-            case "Dog":
-                className = "강아지상 (Dog)";
-                colorClass = "bar-dog";
-                break;
-            case "Cat":
-                className = "고양이상 (Cat)";
-                colorClass = "bar-cat";
-                break;
-            case "Bear":
-                className = "곰상 (Bear)";
-                colorClass = "bar-bear";
-                break;
-            case "Fox":
-                className = "여우상 (Fox)";
-                colorClass = "bar-fox";
-                break;
-            default:
-                className = p.className;
-                colorClass = "bar-default";
+            case "Dog": className = "강아지상 (Dog)"; colorVar = "--dog-color"; break;
+            case "Cat": className = "고양이상 (Cat)"; colorVar = "--cat-color"; break;
+            case "Bear": className = "곰상 (Bear)"; colorVar = "--bear-color"; break;
+            case "Fox": className = "여우상 (Fox)"; colorVar = "--fox-color"; break;
+            default: className = p.className; colorVar = "--primary-blue";
         }
 
         const probPercentage = (p.probability * 100).toFixed(0);
@@ -133,20 +120,22 @@ async function predict(imageElement) {
         const row = document.createElement('div');
         row.className = 'prediction-row';
         row.innerHTML = `
-            <span class="label-text">${className}</span>
+            <div style="display: flex; justify-content: space-between; font-weight: 600;">
+                <span>${className}</span>
+                <span>${probPercentage}%</span>
+            </div>
             <div class="progress-container">
-                <div class="progress-bar ${colorClass}" style="width: ${probPercentage}%">
-                    ${probPercentage}%
-                </div>
+                <div class="progress-bar" style="width: ${probPercentage}%; background-color: var(${colorVar});"></div>
             </div>
         `;
         labelContainer.appendChild(row);
     }
 
-    // Add a result message if it's high enough
-    if (highest.probability > 0.5 && !isWebcamMode) {
-        const message = document.createElement('h3');
-        message.style.marginTop = '20px';
+    if (highest.probability > 0.4 && !isWebcamMode) {
+        const message = document.createElement('h2');
+        message.style.color = 'var(--primary-blue)';
+        message.style.marginTop = '30px';
+        message.style.textAlign = 'center';
         
         let animalEmoji = "";
         let animalText = "";
@@ -156,10 +145,10 @@ async function predict(imageElement) {
             case "Cat": animalEmoji = "🐱"; animalText = "고양이"; break;
             case "Bear": animalEmoji = "🐻"; animalText = "곰"; break;
             case "Fox": animalEmoji = "🦊"; animalText = "여우"; break;
-            default: animalEmoji = "❓"; animalText = highest.className;
+            default: animalEmoji = "✨"; animalText = highest.className;
         }
 
-        message.innerText = `${animalEmoji} 당신은 ${animalText}상입니다!`;
+        message.innerText = `${animalEmoji} 당신은 '${animalText}상'입니다!`;
         labelContainer.prepend(message);
     }
 }
@@ -173,6 +162,7 @@ resetBtn.addEventListener('click', () => {
     }
     webcamContainer.style.display = 'none';
     uploadedImage.style.display = 'none';
+    placeholderText.style.display = 'block';
     labelContainer.innerHTML = '';
     resetBtn.style.display = 'none';
     buttonGroup.style.display = 'flex';
