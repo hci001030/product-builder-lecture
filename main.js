@@ -16,7 +16,7 @@ themeToggle.addEventListener('click', () => {
 });
 
 // Teachable Machine Logic
-const URL = "https://teachablemachine.withgoogle.com/models/DOAIJGXkm/";
+const URL = "https://teachablemachine.withgoogle.com/models/2dXOgxTyj/";
 let model, webcam, maxPredictions;
 let isWebcamMode = false;
 
@@ -103,8 +103,31 @@ async function predict(imageElement) {
             highest = p;
         }
 
-        const className = p.className === "Dog" ? "강아지상 (Dog)" : "고양이상 (Cat)";
-        const colorClass = p.className === "Dog" ? "bar-dog" : "bar-cat";
+        let className = "";
+        let colorClass = "";
+        
+        switch(p.className) {
+            case "Dog":
+                className = "강아지상 (Dog)";
+                colorClass = "bar-dog";
+                break;
+            case "Cat":
+                className = "고양이상 (Cat)";
+                colorClass = "bar-cat";
+                break;
+            case "Bear":
+                className = "곰상 (Bear)";
+                colorClass = "bar-bear";
+                break;
+            case "Fox":
+                className = "여우상 (Fox)";
+                colorClass = "bar-fox";
+                break;
+            default:
+                className = p.className;
+                colorClass = "bar-default";
+        }
+
         const probPercentage = (p.probability * 100).toFixed(0);
 
         const row = document.createElement('div');
@@ -124,8 +147,18 @@ async function predict(imageElement) {
     if (highest.probability > 0.5 && !isWebcamMode) {
         const message = document.createElement('h3');
         message.style.marginTop = '20px';
-        const animalEmoji = highest.className === "Dog" ? "🐶" : "🐱";
-        const animalText = highest.className === "Dog" ? "강아지" : "고양이";
+        
+        let animalEmoji = "";
+        let animalText = "";
+
+        switch(highest.className) {
+            case "Dog": animalEmoji = "🐶"; animalText = "강아지"; break;
+            case "Cat": animalEmoji = "🐱"; animalText = "고양이"; break;
+            case "Bear": animalEmoji = "🐻"; animalText = "곰"; break;
+            case "Fox": animalEmoji = "🦊"; animalText = "여우"; break;
+            default: animalEmoji = "❓"; animalText = highest.className;
+        }
+
         message.innerText = `${animalEmoji} 당신은 ${animalText}상입니다!`;
         labelContainer.prepend(message);
     }

@@ -9,6 +9,8 @@
     --secondary-color: #795548;
     --dog-color: #ffa726;
     --cat-color: #4db6ac;
+    --bear-color: #8d6e63;
+    --fox-color: #ff7043;
 }
 
 body.dark-mode {
@@ -179,6 +181,9 @@ h1 {
 
 .bar-dog { background-color: var(--dog-color); }
 .bar-cat { background-color: var(--cat-color); }
+.bar-bear { background-color: var(--bear-color); }
+.bar-fox { background-color: var(--fox-color); }
+.bar-default { background-color: #9e9e9e; }
 
 /* Article Section */
 .article-section {
