@@ -16,7 +16,7 @@ themeToggle.addEventListener('click', () => {
 });
 
 // Teachable Machine Logic
-const URL = "https://teachablemachine.withgoogle.com/models/2dXOgxTyj/";
+const URL = "https://teachablemachine.withgoogle.com/models/C4lPe_yA3/";
 let model, webcam, maxPredictions;
 let isWebcamMode = false;
 
@@ -108,11 +108,11 @@ async function predict(imageElement) {
         let colorVar = "";
         
         switch(p.className) {
-            case "Dog": className = "강아지상"; colorVar = "--dog-color"; break;
-            case "Cat": className = "고양이상"; colorVar = "--cat-color"; break;
-            case "Bear": className = "곰상"; colorVar = "--bear-color"; break;
-            case "Fox": className = "여우상"; colorVar = "--fox-color"; break;
-            default: className = p.className; colorVar = "--primary-blue";
+            case "강아지": className = "강아지상"; colorVar = "--dog-color"; break;
+            case "고양이": className = "고양이상"; colorVar = "--cat-color"; break;
+            case "곰": className = "곰상"; colorVar = "--bear-color"; break;
+            case "여우": className = "여우상"; colorVar = "--fox-color"; break;
+            default: className = p.className; colorVar = "--primary-purple";
         }
 
         const probPercentage = (p.probability * 100).toFixed(0);
@@ -133,7 +133,7 @@ async function predict(imageElement) {
 
     if (highest.probability > 0.4 && !isWebcamMode) {
         const message = document.createElement('h2');
-        message.style.color = 'var(--primary-blue)';
+        message.style.color = 'var(--primary-purple)';
         message.style.marginTop = '30px';
         message.style.textAlign = 'center';
         
@@ -141,10 +141,10 @@ async function predict(imageElement) {
         let animalText = "";
 
         switch(highest.className) {
-            case "Dog": animalEmoji = "🐶"; animalText = "강아지"; break;
-            case "Cat": animalEmoji = "🐱"; animalText = "고양이"; break;
-            case "Bear": animalEmoji = "🐻"; animalText = "곰"; break;
-            case "Fox": animalEmoji = "🦊"; animalText = "여우"; break;
+            case "강아지": animalEmoji = "🐶"; animalText = "강아지"; break;
+            case "고양이": animalEmoji = "🐱"; animalText = "고양이"; break;
+            case "곰": animalEmoji = "🐻"; animalText = "곰"; break;
+            case "여우": animalEmoji = "🦊"; animalText = "여우"; break;
             default: animalEmoji = "✨"; animalText = highest.className;
         }
 
