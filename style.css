@@ -236,6 +236,14 @@ header h1 {
     margin-bottom: 1rem;
 }
 
+.info-section {
+    background-color: var(--bg-white);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 4rem;
+    border: 1px solid var(--border-color);
+}
+
 .footer {
     margin-top: 5rem;
     padding: 3rem 0;
