@@ -108,10 +108,10 @@ async function predict(imageElement) {
         let colorVar = "";
         
         switch(p.className) {
-            case "Dog": className = "강아지상 (Dog)"; colorVar = "--dog-color"; break;
-            case "Cat": className = "고양이상 (Cat)"; colorVar = "--cat-color"; break;
-            case "Bear": className = "곰상 (Bear)"; colorVar = "--bear-color"; break;
-            case "Fox": className = "여우상 (Fox)"; colorVar = "--fox-color"; break;
+            case "Dog": className = "강아지상"; colorVar = "--dog-color"; break;
+            case "Cat": className = "고양이상"; colorVar = "--cat-color"; break;
+            case "Bear": className = "곰상"; colorVar = "--bear-color"; break;
+            case "Fox": className = "여우상"; colorVar = "--fox-color"; break;
             default: className = p.className; colorVar = "--primary-blue";
         }
 
