@@ -242,6 +242,7 @@ header h1 {
     border-radius: 1rem;
     margin-top: 4rem;
     border: 1px solid var(--border-color);
+    color: var(--text-dark);
 }
 
 .footer {
