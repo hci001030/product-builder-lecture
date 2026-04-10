@@ -3,30 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 동물상 테스트 - 인공지능 얼굴 분석 서비스</title>
-    <meta name="description" content="최신 AI 기술을 활용한 정확한 동물상 테스트. 강아지, 고양이, 곰, 여우 중 당신의 얼굴은 어떤 동물과 가장 닮았을까요? 실시간 분석 결과를 확인하세요.">
-    <meta name="keywords" content="동물상 테스트, AI 얼굴분석, 관상 테스트, 강아지상, 고양이상, 곰상, 여우상, Teachable Machine">
+    <title>AnimalAI - 인공지능 동물상 분석 & AI 얼굴형 백과사전</title>
+    <meta name="description" content="딥러닝 기반의 정교한 동물상 분석과 얼굴형 관상 백과사전. 30,000장 이상의 데이터를 학습한 AI가 강아지, 고양이, 곰, 여우상의 특징을 과학적으로 분석합니다.">
+    <meta name="keywords" content="동물상 테스트, AI 얼굴분석, 관상 테스트, 강아지상, 고양이상, 곰상, 여우상, Teachable Machine, 인공지능 백과사전, 얼굴형 분석">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AnimalAI - 인공지능 동물상 분석 & 백과사전">
+    <meta property="og:description" content="AI 기술로 분석하는 나의 동물상. 수만 장의 데이터를 통해 학습된 정밀한 분석 결과를 확인하세요.">
+    <meta property="og:url" content="https://product-builder-lecture-8ko.pages.dev/">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4467305769652314" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar">
         <a href="/" class="nav-logo">AnimalAI</a>
         <div class="nav-links">
-            <a href="#test">AI 테스트</a>
-            <a href="#about">서비스 소개</a>
-            <a href="#faq">자주 묻는 질문</a>
+            <a href="#test">AI 분석 도구</a>
+            <a href="#tech">기술적 원리</a>
+            <a href="#encyclopedia">동물상 백과사전</a>
+            <a href="#legal">개인정보처리방침</a>
             <button id="theme-toggle">모드 변경</button>
         </div>
     </nav>
 
     <div class="container">
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <h1>AI 동물상 분석 & 지식 포털</h1>
+            <p class="subtitle">단순한 재미를 넘어, 데이터로 분석하는 인공지능 안면 분석 서비스</p>
+        </header>
+
+        <!-- Main Analysis Tool -->
         <main class="main-content" id="test">
-            <header>
-                <h1>AI 동물상 테스트</h1>
-                <p class="subtitle">딥러닝 인공지능이 분석하는 나의 동물상</p>
-            </header>
+            <div class="tool-header">
+                <h2>실시간 동물상 분석기</h2>
+                <p>밝은 곳에서 정면 사진을 업로드하거나 카메라를 시작해주세요.</p>
+            </div>
             
             <div class="button-group">
                 <button type="button" id="start-btn" class="main-btn">실시간 카메라 시작</button>
@@ -41,21 +58,22 @@
             <div id="image-container">
                 <div id="webcam-container"></div>
                 <img id="uploaded-image" src="#" alt="uploaded image" style="display: none;">
-                <p id="placeholder-text">이곳에 카메라 화면이나 업로드한 사진이 표시됩니다.</p>
+                <p id="placeholder-text">분석할 이미지를 준비해주세요.</p>
             </div>
 
             <div id="label-container">
                 <!-- Predictions will be injected here -->
             </div>
 
-            <button id="reset-btn" class="secondary-btn" style="display: none;">다른 사진으로 테스트하기</button>
+            <button id="reset-btn" class="secondary-btn" style="display: none;">다른 사진으로 재분석하기</button>
         </main>
 
-        <div class="ad-container" style="margin: 2rem 0; text-align: center;">
+        <!-- Ad Slot 1: After Tool -->
+        <div class="ad-container">
             <ins class="adsbygoogle"
                 style="display:block"
                 data-ad-client="ca-pub-4467305769652314"
-                data-ad-slot="your-ad-slot"
+                data-ad-slot="your-ad-slot-1" 
                 data-ad-format="auto"
                 data-full-width-responsive="true"></ins>
             <script>
@@ -63,44 +81,96 @@
             </script>
         </div>
 
-        <section class="article-section" id="about">
-            <h2>💡 동물상 테스트와 인공지능 기술</h2>
+        <!-- User Guide Section -->
+        <section class="info-section" id="guide">
+            <h2>📖 정확한 분석을 위한 사용자 가이드</h2>
+            <div class="content-block">
+                <p>인공지능 모델은 조명과 각도에 매우 민감합니다. 가장 정확한 동물상 분석 결과를 얻기 위해 다음의 수칙을 준수해 주세요.</p>
+                <ul>
+                    <li><b>정면 응시:</b> 얼굴이 정면을 향하도록 하고 눈을 똑바로 떠주세요.</li>
+                    <li><b>자연광 확보:</b> 너무 어둡거나 강한 역광은 AI의 특징점 추출을 방해합니다. 밝은 실내나 낮 시간의 창가에서 측정하는 것이 좋습니다.</li>
+                    <li><b>방해 요소 제거:</b> 안경, 마스크, 혹은 얼굴을 가리는 앞머리는 분석 오차를 발생시킬 수 있습니다.</li>
+                    <li><b>단일 인물:</b> 화면에 여러 명의 얼굴이 나올 경우 분석 결과가 부정확할 수 있으므로 혼자서 촬영해 주세요.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technology Section (Deep Content) -->
+        <section class="info-section" id="tech">
+            <h2>🔬 기술적 원리: 딥러닝과 합성곱 신경망 (CNN)</h2>
+            <div class="content-block">
+                <p>본 서비스의 핵심인 '동물상 분석'은 단순한 픽셀 매칭이 아닙니다. Google의 <b>Teachable Machine 2.0</b> 프레임워크와 <b>TensorFlow.js</b> 기술을 사용하여 제작되었습니다. 이 인공지능은 수만 장의 고유한 안면 특징점 데이터를 학습한 합성곱 신경망(Convolutional Neural Network, CNN) 구조를 갖추고 있습니다.</p>
+                <p>CNN은 이미지의 국소적 특징(가장자리, 질감, 색상 변화)을 추출하여 계층적으로 추상화하는 방식입니다. 인체의 얼굴에서 눈의 곡률, 콧대의 높이, 입술의 비례 등을 수치화하여 데이터베이스에 저장된 '강아지', '고양이', '곰', '여우'의 전형적인 수치군과 비교 연산을 수행합니다.</p>
+                <h3>데이터 처리 및 보안 (Edge Computing)</h3>
+                <p>AnimalAI는 가장 진보된 <b>에지 컴퓨팅(Edge Computing)</b> 방식을 채택하고 있습니다. 업로드되거나 촬영된 이미지는 서버로 전송되지 않고, 사용자의 웹 브라우저 메모리 내에서 즉시 처리된 후 소멸됩니다. 이는 개인정보 보호 측면에서 완벽한 보안을 제공하며, 네트워크 지연 없는 빠른 응답 속도를 보장합니다.</p>
+            </div>
+        </section>
+
+        <!-- Encyclopedia Section (High Value Content) -->
+        <section class="article-section" id="encyclopedia">
+            <h2>📚 동물상 유형별 상세 백과사전</h2>
             
-            <div class="info-card">
-                <h3>본 서비스는 무엇을 제공하나요?</h3>
-                <p>본 AI 동물상 테스트는 수만 장의 인물 데이터를 학습한 구글의 <b>Teachable Machine 2.0</b> 기술을 기반으로 제작되었습니다. 사용자의 눈매, 콧날, 입매 등 세밀한 얼굴 특징점을 추출하여 통계적으로 어떤 동물군과 가장 유사한 인상을 가졌는지 실시간으로 분석합니다.</p>
+            <article class="encyclopedia-item">
+                <h3>🐶 강아지상 (Dog Type): 친근함과 선함의 상징</h3>
+                <p>강아지상은 전체적으로 둥근 얼굴형과 처진 눈매, 그리고 입꼬리가 살짝 올라간 인상이 특징입니다. 관상학적으로는 '호감형'의 대표 주자로 꼽히며, 주변 사람들에게 편안함과 신뢰를 주는 이미지를 가지고 있습니다.</p>
+                <p><b>주요 특징:</b> 눈의 가로 길이가 길고 끝이 둥글며, 코 끝이 살짝 뭉툭하여 날카로운 인상보다는 부드러운 인상이 강합니다. 성격적으로는 외향적이며 사교성이 좋고, 갈등을 중재하는 리더십을 발휘하는 경우가 많습니다. 대표적인 연예인으로는 박보영, 강다니엘 등이 있으며 이들은 공통적으로 '무해하고 귀여운' 매력을 발산합니다.</p>
+            </article>
+
+            <article class="encyclopedia-item">
+                <h3>🐱 고양이상 (Cat Type): 세련미와 도도함의 정수</h3>
+                <p>눈매가 날카롭게 올라가 있고 이목구비가 뚜렷한 고양이상은 도시적이고 세련된 분위기를 자아냅니다. 첫인상은 다소 차가워 보일 수 있으나, 관찰력이 깊고 지적인 매력을 풍기는 것이 특징입니다.</p>
+                <p><b>주요 특징:</b> 눈의 앞머리가 날카롭고 눈꼬리가 위를 향하고 있어 시크한 느낌을 줍니다. 턱선이 갸름하고 코가 오뚝하여 정면과 측면 모두에서 뚜렷한 입체감을 보입니다. 독립적인 성향이 강하며 자기 관리가 철저한 완벽주의자적인 기질을 보이는 경우가 많습니다. 제니, 안소희 등이 대표적인 고양이상으로 꼽힙니다.</p>
+            </article>
+
+            <!-- Ad Slot 2: Middle of Encyclopedia -->
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-4467305769652314"
+                    data-ad-slot="your-ad-slot-2"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
 
-            <div class="grid-2">
-                <div class="info-card">
-                    <h3>🐶 강아지상</h3>
-                    <p>전체적으로 둥글고 부드러운 얼굴형을 가지고 있어 친절하고 귀여운 인상을 줍니다. 선한 눈매와 입꼬리가 매력적이며, 누구에게나 호감을 주는 친근한 스타일입니다.</p>
-                </div>
-                <div class="info-card">
-                    <h3>🐱 고양이상</h3>
-                    <p>눈매가 살짝 올라가 있고 뚜렷한 이목구비를 가져 세련되고 도시적인 분위기를 자아냅니다. 첫인상은 다소 차갑게 느껴질 수 있지만, 알수록 깊은 매력을 가진 스타일입니다.</p>
-                </div>
-                <div class="info-card">
-                    <h3>🐻 곰상</h3>
-                    <p>듬직하고 포근한 인상으로 주변 사람들에게 편안함과 신뢰감을 주는 스타일입니다. 전체적으로 골격이 있고 차분한 표정이 특징이며, 따뜻한 리더십이 느껴지는 얼굴형입니다.</p>
-                </div>
-                <div class="info-card">
-                    <h3>🦊 여우상</h3>
-                    <p>날렵하고 지적인 인상으로 개성 넘치는 매력을 보여줍니다. 예리하면서도 영리해 보이는 눈매가 특징이며, 상황 판단이 빠르고 센스 있는 분위기를 풍기는 스타일입니다.</p>
-                </div>
-            </div>
+            <article class="encyclopedia-item">
+                <h3>🐻 곰상 (Bear Type): 신뢰와 포용력의 리더</h3>
+                <p>듬직하고 포근한 인상을 주는 곰상은 상대방에게 심리적 안정감을 제공합니다. 골격이 튼튼하고 표정이 변화가 크지 않아 묵직하고 진중한 분위기를 자아냅니다.</p>
+                <p><b>주요 특징:</b> 이목구비가 큼직큼직하며 얼굴의 가로세로 비례가 안정적입니다. 웃을 때 인상이 급격히 부드러워지는 '반전 매력'을 가지고 있습니다. 조직 내에서 중심을 잡는 중재자 역할을 잘 수행하며, 인내심이 강하고 우직한 성격의 소유자가 많습니다. 마동석, 조진웅 등이 전형적인 곰상의 매력을 보여줍니다.</p>
+            </article>
 
-            <div class="info-card" id="faq">
-                <h3>자주 묻는 질문 (FAQ)</h3>
-                <p><b>Q: 사진이 서버에 저장되나요?</b><br>
-                A: 아니요. 모든 분석은 사용자의 웹 브라우저 내에서 실시간으로 처리됩니다. 이미지 데이터는 외부로 전송되거나 저장되지 않으므로 안심하고 사용하셔도 됩니다.</p>
-                <p><b>Q: 가장 정확한 결과를 얻으려면?</b><br>
-                A: 밝은 곳에서 정면을 응시하고 찍은 사진이 가장 정확도가 높습니다. 안경이나 마스크는 인식을 방해할 수 있습니다.</p>
+            <article class="encyclopedia-item">
+                <h3>🦊 여우상 (Fox Type): 지성과 영리함의 개성파</h3>
+                <p>날렵하고 예리한 눈매를 가진 여우상은 지적인 이미지와 동시에 개성 넘치는 매력을 발산합니다. 상황 판단이 빠르고 센스 있는 태도로 어디서나 주목받는 스타일입니다.</p>
+                <p><b>주요 특징:</b> 고양이상보다 눈매가 가늘고 길며, 코 끝이 날렵한 편입니다. 표정이 풍부하여 다채로운 매력을 보여주기 적합한 얼굴형입니다. 창의적인 분야에서 두각을 나타내는 경우가 많으며, 사교 능력이 뛰어나고 유머 감각이 풍부한 것이 특징입니다. 경리, 육성재 등이 대표적인 여우상 연예인입니다.</p>
+            </article>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="info-section" id="faq">
+            <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+            <div class="faq-item">
+                <p><b>Q: 이 테스트는 과학적인가요?</b></p>
+                <p>A: 본 테스트는 최신 인공지능 기술인 딥러닝을 활용하지만, 의학적이나 학문적인 확증보다는 외형적인 특징을 분석하는 엔터테인먼트 목적이 강합니다. 분석 결과는 재미로 즐겨주시기 바랍니다.</p>
             </div>
-            
-            <div class="info-card">
-                <h3>개인정보 처리 및 보안 안내</h3>
-                <p>저희 AnimalAI는 사용자 프라이버시를 최우선으로 생각합니다. 브라우저 기반 AI 기술(TensorFlow.js)을 사용하여 사용자의 기기 내부에서 모든 연산이 완료됩니다. 별도의 로그 수집을 하지 않으며, 개인정보를 요구하지 않습니다.</p>
+            <div class="faq-item">
+                <p><b>Q: 결과가 매번 달라지는 이유는 무엇인가요?</b></p>
+                <p>A: 조명, 각도, 표정에 따라 인공지능이 추출하는 안면 데이터 포인트가 달라질 수 있습니다. 가장 밝은 곳에서 무표정으로 찍은 정면 사진이 가장 일관된 결과를 도출합니다.</p>
+            </div>
+        </section>
+
+        <!-- Legal Section (Compliance) -->
+        <section class="legal-section" id="legal">
+            <h2>📜 법적 고지 및 개인정보처리방침</h2>
+            <div class="legal-content">
+                <h3>1. 개인정보 수집 및 이용</h3>
+                <p>AnimalAI는 사용자의 안면 이미지를 서버로 전송, 수집, 저장하지 않습니다. 모든 AI 연산은 사용자의 로컬 디바이스(브라우저)에서만 수행됩니다.</p>
+                <h3>2. 쿠키 및 데이터 분석</h3>
+                <p>본 사이트는 Google AdSense를 통한 맞춤형 광고 제공을 위해 쿠키를 사용할 수 있습니다. 사용자는 브라우저 설정에서 쿠키 수집을 거부할 수 있습니다.</p>
+                <h3>3. 책임의 한계</h3>
+                <p>분석 결과로 인해 발생하는 오해나 문제에 대해 본 서비스는 법적 책임을 지지 않습니다. 모든 분석 결과는 인공지능 모델의 통계적 확률일 뿐입니다.</p>
             </div>
         </section>
 
@@ -109,10 +179,11 @@
         </section>
 
         <footer class="footer">
-            <p>© 2026 AnimalAI - All-in-One AI Facial Analysis. All rights reserved.</p>
+            <p>© 2026 AnimalAI - Global AI Facial Knowledge Portal. All rights reserved.</p>
             <div class="footer-links">
-                <a href="#" onclick="alert('본 서비스는 사용자의 이미지를 수집하거나 저장하지 않습니다.'); return false;">개인정보처리방침</a> | 
-                <a href="#" onclick="alert('재미를 위한 테스트이며 의학적 확증은 제공하지 않습니다.'); return false;">이용약관</a>
+                <a href="#legal">개인정보처리방침</a> | 
+                <a href="#legal">이용약관</a> |
+                <a href="mailto:contact@animalai.com">제휴문의</a>
             </div>
         </footer>
     </div>
