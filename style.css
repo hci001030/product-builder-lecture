@@ -125,11 +125,6 @@ h1.title .t-arab  { color: var(--arab);  -webkit-text-stroke: 2px var(--ink); }
   width: 140px;
   text-align: center;
   box-shadow: 5px 5px 0 var(--ink);
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-.type-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0 var(--ink);
 }
 .type-card .icon { display: none; }
 .type-card .name {
