@@ -7,17 +7,17 @@
 }
 
 :root {
-  --bg:      #F5F0E8;
-  --paper:   #FFFDF7;
-  --ink:     #1A1008;
-  --red:     #D93025;
-  --orange:  #FF6B00;
-  --yellow:  #FFD600;
-  --blue:    #1A3A8F;
-  --tofu:    #4EAFD4;
-  --arab:    #D97B2B;
-  --muted:   #7A6F60;
-  --border:  3px solid #1A1008;
+  --bg:      #F0FDF4;
+  --paper:   #FFFFFF;
+  --ink:     #14532D;
+  --red:     #16A34A;
+  --orange:  #15803D;
+  --yellow:  #BBF7D0;
+  --blue:    #166534;
+  --tofu:    #3B82F6;
+  --arab:    #F97316;
+  --muted:   #4B7A5A;
+  --border:  3px solid #14532D;
 }
 
 body {
@@ -27,8 +27,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-image:
-    radial-gradient(circle at 20% 30%, rgba(255,214,0,0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(217,48,37,0.08) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(134,239,172,0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(74,222,128,0.15) 0%, transparent 50%);
 }
 
 /* ── SCREENS ── */
@@ -254,8 +254,8 @@ h1.title .t-arab  { color: var(--arab);  -webkit-text-stroke: 2px var(--ink); }
 .tips {
   width: 100%;
   max-width: 380px;
-  background: #FFFAE8;
-  border: 2px solid var(--yellow);
+  background: #F0FDF4;
+  border: 2px solid #86EFAC;
   border-radius: 4px;
   padding: 14px 18px;
   margin-bottom: 24px;
@@ -264,11 +264,11 @@ h1.title .t-arab  { color: var(--arab);  -webkit-text-stroke: 2px var(--ink); }
 .tips .tip-title {
   font-family: 'Black Han Sans', sans-serif;
   font-size: 14px;
-  color: #B8860B;
+  color: #166534;
   margin-bottom: 8px;
   letter-spacing: 0.5px;
 }
-.tips p { font-size: 12px; color: #7A6540; font-weight: 700; margin-bottom: 3px; }
+.tips p { font-size: 12px; color: #4B7A5A; font-weight: 700; margin-bottom: 3px; }
 .tips p:last-child { margin-bottom: 0; }
 
 .btn-analyze {
@@ -362,10 +362,10 @@ h1.title .t-arab  { color: var(--arab);  -webkit-text-stroke: 2px var(--ink); }
   height: 100%;
   background: repeating-linear-gradient(
     45deg,
-    var(--yellow),
-    var(--yellow) 10px,
-    var(--orange) 10px,
-    var(--orange) 20px
+    #4ADE80,
+    #4ADE80 10px,
+    #16A34A 10px,
+    #16A34A 20px
   );
   border-radius: 0;
   width: 0%;
@@ -503,7 +503,7 @@ h1.title .t-arab  { color: var(--arab);  -webkit-text-stroke: 2px var(--ink); }
 }
 .desc-card p {
   font-size: 14px;
-  color: #3A3020;
+  color: #1A3A24;
   line-height: 1.8;
   font-weight: 700;
   margin-bottom: 10px;
