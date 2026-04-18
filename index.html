@@ -1,222 +1,159 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimalAI - 인공지능 동물상 분석 & AI 얼굴형 백과사전</title>
-    <meta name="description" content="딥러닝 기반의 정교한 동물상 분석과 얼굴형 관상 백과사전. 30,000장 이상의 데이터를 학습한 AI가 강아지, 고양이, 곰, 여우상의 특징을 과학적으로 분석합니다.">
-    <meta name="keywords" content="동물상 테스트, AI 얼굴분석, 관상 테스트, 강아지상, 고양이상, 곰상, 여우상, Teachable Machine, 인공지능 백과사전, 얼굴형 분석">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="AnimalAI - 인공지능 동물상 분석 & 백과사전">
-    <meta property="og:description" content="AI 기술로 분석하는 나의 동물상. 수만 장의 데이터를 통해 학습된 정밀한 분석 결과를 확인하세요.">
-    <meta property="og:url" content="https://product-builder-lecture-8ko.pages.dev/">
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4467305769652314" crossorigin="anonymous"></script>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJG2TLLB7C"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-XJG2TLLB7C');
-    </script>
-    
-    <!-- MS Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "w9i43m1thm");
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>두부상 vs 아랍상 테스트 🔮</title>
+  <meta name="description" content="AI가 당신의 얼굴을 분석해 두부상인지 아랍상인지 알려드립니다!" />
+  <meta property="og:title" content="두부상 vs 아랍상 테스트 🔮" />
+  <meta property="og:description" content="AI가 당신의 얼굴을 분석해 두부상인지 아랍상인지 알려드립니다!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <nav class="navbar">
-        <a href="/" class="nav-logo">AnimalAI</a>
-        <div class="nav-links">
-            <a href="#test">AI 분석 도구</a>
-            <a href="#tech">기술적 원리</a>
-            <a href="#encyclopedia">동물상 백과사전</a>
-            <a href="#legal">개인정보처리방침</a>
-            <button id="theme-toggle">모드 변경</button>
-        </div>
-    </nav>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <header class="hero-section">
-            <h1>AI 동물상 분석 & 지식 포털</h1>
-            <p class="subtitle">단순한 재미를 넘어, 데이터로 분석하는 인공지능 안면 분석 서비스</p>
-        </header>
+<!-- Model status indicator -->
+<div class="model-status" id="model-status">
+  <div class="dot"></div>
+  <span id="model-status-text">AI 로딩 중...</span>
+</div>
 
-        <!-- Main Analysis Tool -->
-        <main class="main-content" id="test">
-            <div class="tool-header">
-                <h2>실시간 동물상 분석기</h2>
-                <p>밝은 곳에서 정면 사진을 업로드하거나 카메라를 시작해주세요.</p>
-            </div>
-            
-            <div class="button-group">
-                <button type="button" id="start-btn" class="main-btn">실시간 카메라 시작</button>
-                <label for="upload-input" class="main-btn">
-                    사진 업로드 분석
-                    <input type="file" id="upload-input" accept="image/*" style="display: none;">
-                </label>
-            </div>
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
 
-            <div id="loading-spinner" class="spinner" style="display: none;"></div>
-            
-            <div id="image-container">
-                <div id="webcam-container"></div>
-                <img id="uploaded-image" src="#" alt="uploaded image" style="display: none;">
-                <p id="placeholder-text">분석할 이미지를 준비해주세요.</p>
-            </div>
+<!-- ══════════════════════════════════════
+     SCREEN 1: INTRO
+══════════════════════════════════════ -->
+<div class="screen active" id="screen-intro">
+  <div class="intro-emoji-row">🧐</div>
+  <div class="badge">✨ AI 관상 테스트</div>
+  <h1 class="title">
+    당신은<br/>
+    <span class="highlight">두부상</span>인가요<br/>
+    <span class="highlight">아랍상</span>인가요?
+  </h1>
+  <p class="subtitle">
+    사진 한 장으로 AI가 당신의 얼굴을 분석합니다.<br/>
+    과학적 근거보다 재미로 즐겨주세요 😄
+  </p>
 
-            <div id="label-container">
-                <!-- Predictions will be injected here -->
-            </div>
-
-            <button id="reset-btn" class="secondary-btn" style="display: none;">다른 사진으로 재분석하기</button>
-        </main>
-
-        <!-- Ad Slot 1: After Tool -->
-        <div class="ad-container">
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4467305769652314"
-                data-ad-slot="your-ad-slot-1" 
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
-        <!-- User Guide Section -->
-        <section class="info-section" id="guide">
-            <h2>📖 정확한 분석을 위한 사용자 가이드</h2>
-            <div class="content-block">
-                <p>인공지능 모델은 조명과 각도에 매우 민감합니다. 가장 정확한 동물상 분석 결과를 얻기 위해 다음의 수칙을 준수해 주세요.</p>
-                <ul>
-                    <li><b>정면 응시:</b> 얼굴이 정면을 향하도록 하고 눈을 똑바로 떠주세요.</li>
-                    <li><b>자연광 확보:</b> 너무 어둡거나 강한 역광은 AI의 특징점 추출을 방해합니다. 밝은 실내나 낮 시간의 창가에서 측정하는 것이 좋습니다.</li>
-                    <li><b>방해 요소 제거:</b> 안경, 마스크, 혹은 얼굴을 가리는 앞머리는 분석 오차를 발생시킬 수 있습니다.</li>
-                    <li><b>단일 인물:</b> 화면에 여러 명의 얼굴이 나올 경우 분석 결과가 부정확할 수 있으므로 혼자서 촬영해 주세요.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Technology Section (Deep Content) -->
-        <section class="info-section" id="tech">
-            <h2>🔬 기술적 원리: 딥러닝과 합성곱 신경망 (CNN)</h2>
-            <div class="content-block">
-                <p>본 서비스의 핵심인 '동물상 분석'은 단순한 픽셀 매칭이 아닙니다. Google의 <b>Teachable Machine 2.0</b> 프레임워크와 <b>TensorFlow.js</b> 기술을 사용하여 제작되었습니다. 이 인공지능은 수만 장의 고유한 안면 특징점 데이터를 학습한 합성곱 신경망(Convolutional Neural Network, CNN) 구조를 갖추고 있습니다.</p>
-                <p>CNN은 이미지의 국소적 특징(가장자리, 질감, 색상 변화)을 추출하여 계층적으로 추상화하는 방식입니다. 인체의 얼굴에서 눈의 곡률, 콧대의 높이, 입술의 비례 등을 수치화하여 데이터베이스에 저장된 '강아지', '고양이', '곰', '여우'의 전형적인 수치군과 비교 연산을 수행합니다.</p>
-                <h3>데이터 처리 및 보안 (Edge Computing)</h3>
-                <p>AnimalAI는 가장 진보된 <b>에지 컴퓨팅(Edge Computing)</b> 방식을 채택하고 있습니다. 업로드되거나 촬영된 이미지는 서버로 전송되지 않고, 사용자의 웹 브라우저 메모리 내에서 즉시 처리된 후 소멸됩니다. 이는 개인정보 보호 측면에서 완벽한 보안을 제공하며, 네트워크 지연 없는 빠른 응답 속도를 보장합니다.</p>
-            </div>
-        </section>
-
-        <!-- Encyclopedia Section (High Value Content) -->
-        <section class="article-section" id="encyclopedia">
-            <h2>📚 동물상 유형별 상세 백과사전</h2>
-            
-            <article class="encyclopedia-item">
-                <h3>🐶 강아지상 (Dog Type): 친근함과 선함의 상징</h3>
-                <p>강아지상은 전체적으로 둥근 얼굴형과 처진 눈매, 그리고 입꼬리가 살짝 올라간 인상이 특징입니다. 관상학적으로는 '호감형'의 대표 주자로 꼽히며, 주변 사람들에게 편안함과 신뢰를 주는 이미지를 가지고 있습니다.</p>
-                <p><b>주요 특징:</b> 눈의 가로 길이가 길고 끝이 둥글며, 코 끝이 살짝 뭉툭하여 날카로운 인상보다는 부드러운 인상이 강합니다. 성격적으로는 외향적이며 사교성이 좋고, 갈등을 중재하는 리더십을 발휘하는 경우가 많습니다. 대표적인 연예인으로는 박보영, 강다니엘 등이 있으며 이들은 공통적으로 '무해하고 귀여운' 매력을 발산합니다.</p>
-            </article>
-
-            <article class="encyclopedia-item">
-                <h3>🐱 고양이상 (Cat Type): 세련미와 도도함의 정수</h3>
-                <p>눈매가 날카롭게 올라가 있고 이목구비가 뚜렷한 고양이상은 도시적이고 세련된 분위기를 자아냅니다. 첫인상은 다소 차가워 보일 수 있으나, 관찰력이 깊고 지적인 매력을 풍기는 것이 특징입니다.</p>
-                <p><b>주요 특징:</b> 눈의 앞머리가 날카롭고 눈꼬리가 위를 향하고 있어 시크한 느낌을 줍니다. 턱선이 갸름하고 코가 오뚝하여 정면과 측면 모두에서 뚜렷한 입체감을 보입니다. 독립적인 성향이 강하며 자기 관리가 철저한 완벽주의자적인 기질을 보이는 경우가 많습니다. 제니, 안소희 등이 대표적인 고양이상으로 꼽힙니다.</p>
-            </article>
-
-            <!-- Ad Slot 2: Middle of Encyclopedia -->
-            <div class="ad-container">
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-4467305769652314"
-                    data-ad-slot="your-ad-slot-2"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-
-            <article class="encyclopedia-item">
-                <h3>🐻 곰상 (Bear Type): 신뢰와 포용력의 리더</h3>
-                <p>듬직하고 포근한 인상을 주는 곰상은 상대방에게 심리적 안정감을 제공합니다. 골격이 튼튼하고 표정이 변화가 크지 않아 묵직하고 진중한 분위기를 자아냅니다.</p>
-                <p><b>주요 특징:</b> 이목구비가 큼직큼직하며 얼굴의 가로세로 비례가 안정적입니다. 웃을 때 인상이 급격히 부드러워지는 '반전 매력'을 가지고 있습니다. 조직 내에서 중심을 잡는 중재자 역할을 잘 수행하며, 인내심이 강하고 우직한 성격의 소유자가 많습니다. 마동석, 조진웅 등이 전형적인 곰상의 매력을 보여줍니다.</p>
-            </article>
-
-            <article class="encyclopedia-item">
-                <h3>🦊 여우상 (Fox Type): 지성과 영리함의 개성파</h3>
-                <p>날렵하고 예리한 눈매를 가진 여우상은 지적인 이미지와 동시에 개성 넘치는 매력을 발산합니다. 상황 판단이 빠르고 센스 있는 태도로 어디서나 주목받는 스타일입니다.</p>
-                <p><b>주요 특징:</b> 고양이상보다 눈매가 가늘고 길며, 코 끝이 날렵한 편입니다. 표정이 풍부하여 다채로운 매력을 보여주기 적합한 얼굴형입니다. 창의적인 분야에서 두각을 나타내는 경우가 많으며, 사교 능력이 뛰어나고 유머 감각이 풍부한 것이 특징입니다. 경리, 육성재 등이 대표적인 여우상 연예인입니다.</p>
-            </article>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="info-section" id="faq">
-            <h2>❓ 자주 묻는 질문 (FAQ)</h2>
-            <div class="faq-item">
-                <p><b>Q: 이 테스트는 과학적인가요?</b></p>
-                <p>A: 본 테스트는 최신 인공지능 기술인 딥러닝을 활용하지만, 의학적이나 학문적인 확증보다는 외형적인 특징을 분석하는 엔터테인먼트 목적이 강합니다. 분석 결과는 재미로 즐겨주시기 바랍니다.</p>
-            </div>
-            <div class="faq-item">
-                <p><b>Q: 결과가 매번 달라지는 이유는 무엇인가요?</b></p>
-                <p>A: 조명, 각도, 표정에 따라 인공지능이 추출하는 안면 데이터 포인트가 달라질 수 있습니다. 가장 밝은 곳에서 무표정으로 찍은 정면 사진이 가장 일관된 결과를 도출합니다.</p>
-            </div>
-        </section>
-
-        <!-- Legal Section (Compliance) -->
-        <section class="legal-section" id="legal">
-            <h2>📜 법적 고지 및 개인정보처리방침</h2>
-            <div class="legal-content">
-                <h3>1. 개인정보 수집 및 이용</h3>
-                <p>AnimalAI는 사용자의 안면 이미지를 서버로 전송, 수집, 저장하지 않습니다. 모든 AI 연산은 사용자의 로컬 디바이스(브라우저)에서만 수행됩니다.</p>
-                <h3>2. 쿠키 및 데이터 분석</h3>
-                <p>본 사이트는 Google AdSense를 통한 맞춤형 광고 제공을 위해 쿠키를 사용할 수 있습니다. 사용자는 브라우저 설정에서 쿠키 수집을 거부할 수 있습니다.</p>
-                <h3>3. 책임의 한계</h3>
-                <p>분석 결과로 인해 발생하는 오해나 문제에 대해 본 서비스는 법적 책임을 지지 않습니다. 모든 분석 결과는 인공지능 모델의 통계적 확률일 뿐입니다.</p>
-            </div>
-        </section>
-
-        <section class="info-section">
-            <div id="disqus_thread"></div>
-        </section>
-
-        <footer class="footer">
-            <p>© 2026 AnimalAI - Global AI Facial Knowledge Portal. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#legal">개인정보처리방침</a> | 
-                <a href="#legal">이용약관</a> |
-                <a href="mailto:contact@animalai.com">제휴문의</a>
-            </div>
-        </footer>
+  <div class="type-cards">
+    <div class="type-card tofu">
+      <div class="icon">🤍</div>
+      <div class="name">두부상</div>
+      <div class="desc">순하고 부드러운<br/>얼굴형</div>
     </div>
+    <div class="type-card arab">
+      <div class="icon">🌙</div>
+      <div class="name">아랍상</div>
+      <div class="desc">강렬하고 이국적인<br/>얼굴형</div>
+    </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script src="main.js"></script>
-    <script>
-        (function() { 
-        var d = document, s = d.createElement('script');
-        s.src = 'https://productbuilder-8jbmlzrczj.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
-    </script>
+  <button class="btn-start" id="btn-to-upload">
+    🔮 지금 바로 테스트하기
+  </button>
+  <p class="count-badge">지금까지 <strong id="test-count">12,847</strong>명이 테스트했어요</p>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 2: UPLOAD
+══════════════════════════════════════ -->
+<div class="screen" id="screen-upload">
+  <div class="upload-header">
+    <h2>📸 얼굴 사진을 올려주세요</h2>
+    <p>정면 사진이 가장 정확한 결과를 드려요</p>
+  </div>
+
+  <div class="upload-area" id="upload-area">
+    <div class="upload-icon">🖼️</div>
+    <h3>사진을 여기에 드래그하거나</h3>
+    <p>클릭해서 갤러리에서 선택하세요</p>
+  </div>
+  <input type="file" id="file-input" accept="image/*" capture="user" />
+
+  <div class="preview-wrapper" id="preview-wrapper">
+    <img id="preview-img" src="" alt="미리보기" />
+    <button class="remove-btn" id="remove-btn">✕</button>
+  </div>
+
+  <div class="tips">
+    <div class="tip-title">💡 좋은 결과를 위한 팁</div>
+    <p>✓ 정면을 바라보는 사진</p>
+    <p>✓ 얼굴이 잘 보이는 밝은 사진</p>
+    <p>✓ 모자나 선글라스가 없는 사진</p>
+  </div>
+
+  <button class="btn-analyze" id="btn-analyze">
+    🔍 AI 분석 시작하기
+  </button>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 3: LOADING
+══════════════════════════════════════ -->
+<div class="screen" id="screen-loading">
+  <div class="loading-face">🔮</div>
+  <div class="loading-title">AI가 분석 중이에요...</div>
+  <ul class="loading-steps" id="loading-steps">
+    <li id="step-1">👁️ 얼굴 윤곽 분석 중...</li>
+    <li id="step-2">📐 이목구비 비율 측정 중...</li>
+    <li id="step-3">🧬 관상 패턴 매칭 중...</li>
+    <li id="step-4">✨ 결과 생성 중...</li>
+  </ul>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progress-fill"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 4: RESULT
+══════════════════════════════════════ -->
+<div class="screen" id="screen-result">
+  <div class="result-header">
+    <div class="result-badge">🎯 분석 완료</div>
+    <br/>
+    <div class="result-photo-wrap">
+      <img id="result-photo" src="" alt="분석 사진" />
+      <div class="result-emoji-overlay" id="result-emoji"></div>
+    </div>
+  </div>
+
+  <div class="result-type-title" id="result-type-title"></div>
+  <div class="result-tagline" id="result-tagline"></div>
+
+  <div class="pct-section">
+    <div class="pct-row">
+      <div class="pct-label">🤍 두부상</div>
+      <div class="pct-bar">
+        <div class="pct-bar-fill tofu" id="bar-tofu"></div>
+      </div>
+      <div class="pct-value" id="val-tofu">0%</div>
+    </div>
+    <div class="pct-row">
+      <div class="pct-label">🌙 아랍상</div>
+      <div class="pct-bar">
+        <div class="pct-bar-fill arab" id="bar-arab"></div>
+      </div>
+      <div class="pct-value" id="val-arab">0%</div>
+    </div>
+  </div>
+
+  <div class="desc-card" id="desc-card">
+    <h3 id="desc-title"></h3>
+    <p id="desc-body-1"></p>
+    <p id="desc-body-2"></p>
+    <div class="trait-chips" id="trait-chips"></div>
+  </div>
+
+  <button class="btn-share" id="btn-share">📲 결과 공유하기</button>
+  <button class="btn-copy" id="btn-copy">🔗 링크 복사하기</button>
+  <button class="btn-retry" id="btn-retry">다른 사진으로 다시 테스트하기</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
