@@ -131,7 +131,7 @@ h1.title .t-arab  { color: var(--arab);  -webkit-text-stroke: 2px var(--ink); }
   transform: translate(-2px, -2px);
   box-shadow: 7px 7px 0 var(--ink);
 }
-.type-card .icon { font-size: 42px; margin-bottom: 8px; line-height: 1; }
+.type-card .icon { display: none; }
 .type-card .name {
   font-family: 'Black Han Sans', sans-serif;
   font-size: 18px;
