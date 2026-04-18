@@ -309,10 +309,17 @@ h1.title .t-arab  { color: var(--arab);  -webkit-text-stroke: 2px var(--ink); }
   background: var(--bg);
 }
 .loading-face {
-  font-size: 80px;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 32px;
+  color: var(--red);
   margin-bottom: 20px;
   animation: wobble 1.2s ease-in-out infinite;
   line-height: 1;
+  border: var(--border);
+  padding: 14px 28px;
+  background: var(--yellow);
+  box-shadow: 5px 5px 0 var(--ink);
+  display: inline-block;
 }
 @keyframes wobble {
   0%   { transform: rotate(-12deg) scale(1); }
