@@ -8,7 +8,8 @@
   <meta property="og:title" content="두부상 vs 아랍상 테스트 🔮" />
   <meta property="og:description" content="AI가 당신의 얼굴을 분석해 두부상인지 아랍상인지 알려드립니다!" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700;900&display=swap" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -26,12 +27,13 @@
      SCREEN 1: INTRO
 ══════════════════════════════════════ -->
 <div class="screen active" id="screen-intro">
-  <div class="intro-emoji-row">🧐</div>
-  <div class="badge">✨ AI 관상 테스트</div>
+  <div class="intro-thumb">🤔</div>
+  <div class="stamp-badge">AI 관상 테스트</div>
   <h1 class="title">
-    당신은<br/>
-    <span class="highlight">두부상</span>인가요<br/>
-    <span class="highlight">아랍상</span>인가요?
+    <span class="t-tofu">두부상</span>
+    <span class="vs">VS</span>
+    <span class="t-arab">아랍상</span><br/>
+    당신은 어느 쪽?
   </h1>
   <p class="subtitle">
     사진 한 장으로 AI가 당신의 얼굴을 분석합니다.<br/>
@@ -112,7 +114,7 @@
 ══════════════════════════════════════ -->
 <div class="screen" id="screen-result">
   <div class="result-header">
-    <div class="result-badge">🎯 분석 완료</div>
+    <div class="result-stamp">🎯 분석 완료</div>
     <br/>
     <div class="result-photo-wrap">
       <img id="result-photo" src="" alt="분석 사진" />
