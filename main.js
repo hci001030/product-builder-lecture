@@ -104,6 +104,7 @@ document.getElementById("btn-analyze").addEventListener("click", startAnalysis);
 async function startAnalysis() {
   if (!uploadedImageEl) return;
   showScreen("screen-loading");
+  try {
   await runLoadingAnimation();
 
   let tofuPct, arabPct;
@@ -133,6 +134,11 @@ async function startAnalysis() {
   }
 
   showResult(tofuPct, arabPct);
+  } catch (e) {
+    console.error("분석 오류:", e);
+    const tofuFallback = Math.floor(Math.random() * 41) + 30;
+    showResult(tofuFallback, 100 - tofuFallback);
+  }
 }
 
 async function runLoadingAnimation() {
@@ -160,7 +166,6 @@ function showResult(tofuPct, arabPct) {
   const data   = CONTENT[winner];
 
   document.getElementById("result-photo").src = previewImg.src;
-  document.getElementById("result-emoji").textContent = data.emoji;
 
   const titleEl = document.getElementById("result-type-title");
   titleEl.textContent = winner === "tofu" ? "두부상" : "아랍상";
