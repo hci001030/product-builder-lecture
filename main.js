@@ -85,13 +85,14 @@ document.getElementById("remove-btn").addEventListener("click", () => {
 function handleFile(file) {
   const reader = new FileReader();
   reader.onload = e => {
-    previewImg.src = e.target.result;
-    previewWrapper.style.display = "block";
-    uploadArea.style.display     = "none";
-    document.getElementById("btn-analyze").style.display = "block";
-
     const img = new Image();
-    img.onload = () => { uploadedImageEl = img; };
+    img.onload = () => {
+      uploadedImageEl = img;
+      previewImg.src = e.target.result;
+      previewWrapper.style.display = "block";
+      uploadArea.style.display     = "none";
+      document.getElementById("btn-analyze").style.display = "block";
+    };
     img.src = e.target.result;
   };
   reader.readAsDataURL(file);
@@ -109,7 +110,10 @@ async function startAnalysis() {
 
   if (model) {
     try {
-      const predictions = await model.predict(uploadedImageEl);
+      const timeout = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("timeout")), 8000)
+      );
+      const predictions = await Promise.race([model.predict(uploadedImageEl), timeout]);
       const map = {};
       predictions.forEach(p => { map[p.className.toLowerCase()] = p.probability; });
 
@@ -117,11 +121,7 @@ async function startAnalysis() {
       const arabKey = Object.keys(map).find(k => k.includes("arab") || k.includes("아랍")) || Object.keys(map)[1];
 
       tofuPct = Math.round((map[tofuKey] || 0) * 100);
-      arabPct = Math.round((map[arabKey] || 0) * 100);
-
-      // ensure sum = 100
-      const total = tofuPct + arabPct;
-      if (total !== 100) { arabPct = 100 - tofuPct; }
+      arabPct = 100 - tofuPct;
     } catch (e) {
       console.error("예측 오류:", e);
       tofuPct = Math.floor(Math.random() * 41) + 30;
