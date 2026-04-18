@@ -16,19 +16,21 @@
 
 <div class="model-status" id="model-status">
   <div class="dot"></div>
-  <span id="model-status-text">AI 로딩 중...</span>
+  <span id="model-status-text" data-i18n="modelLoading">AI 로딩 중...</span>
 </div>
+
+<button class="lang-btn" id="lang-btn">EN</button>
 
 <div class="toast" id="toast"></div>
 
 <!-- SCREEN 1: INTRO -->
 <div class="screen active" id="screen-intro">
-  <div class="stamp-badge">AI 관상 테스트</div>
-  <h1 class="title">
+  <div class="stamp-badge" data-i18n="stampBadge">AI 관상 테스트</div>
+  <h1 class="title" id="main-title">
     나의 <span class="t-tofu">두부</span><span class="vs">vs</span><span class="t-arab">아랍</span><br/>
     비율은?
   </h1>
-  <p class="subtitle">
+  <p class="subtitle" data-i18n="subtitle">
     사진 한 장으로 AI가 당신의 얼굴을 분석합니다.<br/>
     과학적 근거보다 재미로 즐겨주세요
   </p>
@@ -36,33 +38,35 @@
   <div class="type-cards">
     <div class="type-card tofu">
       <div class="icon"></div>
-      <div class="name">두부상</div>
-      <div class="desc">순하고 부드러운<br/>얼굴형</div>
+      <div class="name" data-i18n="tofuName">두부상</div>
+      <div class="desc" data-i18n="tofuDesc">순하고 부드러운<br/>얼굴형</div>
     </div>
     <div class="type-card arab">
       <div class="icon"></div>
-      <div class="name">아랍상</div>
-      <div class="desc">강렬하고 이국적인<br/>얼굴형</div>
+      <div class="name" data-i18n="arabName">아랍상</div>
+      <div class="desc" data-i18n="arabDesc">강렬하고 이국적인<br/>얼굴형</div>
     </div>
   </div>
 
-  <button class="btn-start" id="btn-to-upload">
+  <button class="btn-start" id="btn-to-upload" data-i18n="btnStart">
     지금 바로 테스트하기
   </button>
-  <p class="count-badge">지금까지 <strong id="test-count">12,847</strong>명이 테스트했어요</p>
+  <p class="count-badge" id="count-badge-text">
+    지금까지 <strong id="test-count">12,847</strong>명이 테스트했어요
+  </p>
 </div>
 
 <!-- SCREEN 2: UPLOAD -->
 <div class="screen" id="screen-upload">
   <div class="upload-header">
-    <h2>얼굴 사진을 올려주세요</h2>
-    <p>정면 사진이 가장 정확한 결과를 드려요</p>
+    <h2 data-i18n="uploadTitle">얼굴 사진을 올려주세요</h2>
+    <p data-i18n="uploadSubtitle">정면 사진이 가장 정확한 결과를 드려요</p>
   </div>
 
   <div class="upload-area" id="upload-area">
-    <div class="upload-icon">사진 선택</div>
-    <h3>사진을 여기에 드래그하거나</h3>
-    <p>클릭해서 갤러리에서 선택하세요</p>
+    <div class="upload-icon" data-i18n="uploadIconText">사진 선택</div>
+    <h3 data-i18n="uploadDrag">사진을 여기에 드래그하거나</h3>
+    <p data-i18n="uploadClick">클릭해서 갤러리에서 선택하세요</p>
   </div>
   <input type="file" id="file-input" accept="image/*" capture="user" />
 
@@ -72,26 +76,26 @@
   </div>
 
   <div class="tips">
-    <div class="tip-title">좋은 결과를 위한 팁</div>
-    <p>· 정면을 바라보는 사진</p>
-    <p>· 얼굴이 잘 보이는 밝은 사진</p>
-    <p>· 모자나 선글라스가 없는 사진</p>
+    <div class="tip-title" data-i18n="tipsTitle">좋은 결과를 위한 팁</div>
+    <p data-i18n="tip1">· 정면을 바라보는 사진</p>
+    <p data-i18n="tip2">· 얼굴이 잘 보이는 밝은 사진</p>
+    <p data-i18n="tip3">· 모자나 선글라스가 없는 사진</p>
   </div>
 
-  <button class="btn-analyze" id="btn-analyze">
+  <button class="btn-analyze" id="btn-analyze" data-i18n="btnAnalyze">
     AI 분석 시작하기
   </button>
 </div>
 
 <!-- SCREEN 3: LOADING -->
 <div class="screen" id="screen-loading">
-  <div class="loading-face">분석중</div>
-  <div class="loading-title">AI가 분석 중이에요...</div>
+  <div class="loading-face" data-i18n="loadingFace">분석중</div>
+  <div class="loading-title" data-i18n="loadingTitle">AI가 분석 중이에요...</div>
   <ul class="loading-steps" id="loading-steps">
-    <li id="step-1">얼굴 윤곽 분석 중...</li>
-    <li id="step-2">이목구비 비율 측정 중...</li>
-    <li id="step-3">관상 패턴 매칭 중...</li>
-    <li id="step-4">결과 생성 중...</li>
+    <li id="step-1" data-i18n="step1">얼굴 윤곽 분석 중...</li>
+    <li id="step-2" data-i18n="step2">이목구비 비율 측정 중...</li>
+    <li id="step-3" data-i18n="step3">관상 패턴 매칭 중...</li>
+    <li id="step-4" data-i18n="step4">결과 생성 중...</li>
   </ul>
   <div class="progress-bar-wrap">
     <div class="progress-bar-fill" id="progress-fill"></div>
@@ -101,7 +105,7 @@
 <!-- SCREEN 4: RESULT -->
 <div class="screen" id="screen-result">
   <div class="result-header">
-    <div class="result-stamp">분석 완료</div>
+    <div class="result-stamp" data-i18n="resultStamp">분석 완료</div>
     <br/>
     <div class="result-photo-wrap">
       <img id="result-photo" src="" alt="분석 사진" />
@@ -113,17 +117,13 @@
 
   <div class="pct-section">
     <div class="pct-row">
-      <div class="pct-label">두부상</div>
-      <div class="pct-bar">
-        <div class="pct-bar-fill tofu" id="bar-tofu"></div>
-      </div>
+      <div class="pct-label" data-i18n="tofuName">두부상</div>
+      <div class="pct-bar"><div class="pct-bar-fill tofu" id="bar-tofu"></div></div>
       <div class="pct-value" id="val-tofu">0%</div>
     </div>
     <div class="pct-row">
-      <div class="pct-label">아랍상</div>
-      <div class="pct-bar">
-        <div class="pct-bar-fill arab" id="bar-arab"></div>
-      </div>
+      <div class="pct-label" data-i18n="arabName">아랍상</div>
+      <div class="pct-bar"><div class="pct-bar-fill arab" id="bar-arab"></div></div>
       <div class="pct-value" id="val-arab">0%</div>
     </div>
   </div>
@@ -135,9 +135,9 @@
     <div class="trait-chips" id="trait-chips"></div>
   </div>
 
-  <button class="btn-share" id="btn-share">결과 공유하기</button>
-  <button class="btn-copy" id="btn-copy">링크 복사하기</button>
-  <button class="btn-retry" id="btn-retry">다른 사진으로 다시 테스트하기</button>
+  <button class="btn-share" id="btn-share" data-i18n="btnShare">결과 공유하기</button>
+  <button class="btn-copy" id="btn-copy" data-i18n="btnCopy">링크 복사하기</button>
+  <button class="btn-retry" id="btn-retry" data-i18n="btnRetry">다른 사진으로 다시 테스트하기</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
