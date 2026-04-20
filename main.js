@@ -15,8 +15,12 @@ const T = {
     arabName:      '아랍상',
     arabDesc:      '강렬하고 이국적인<br/>얼굴형',
     btnStart:      '지금 바로 테스트하기',
-    countBadge:    '명이 테스트했어요',
-    countPrefix:   '지금까지 ',
+    how1:          '사진 업로드',
+    how2:          'AI 분석',
+    how3:          '결과 확인',
+    footerDisclaimer: '재미 목적의 테스트이며 과학적 근거가 없습니다.',
+    footerPhotoNote:  '업로드한 사진은 기기에서만 처리되며 저장되지 않습니다.',
+    footerPrivacy: '개인정보처리방침',
     uploadTitle:   '얼굴 사진을 올려주세요',
     uploadSubtitle:'정면 사진이 가장 정확한 결과를 드려요',
     uploadIconText:'사진 선택',
@@ -54,8 +58,12 @@ const T = {
     arabName:      'Arab Type',
     arabDesc:      'Intense & exotic<br/>face type',
     btnStart:      'Start Test Now',
-    countBadge:    ' people have taken this test',
-    countPrefix:   '',
+    how1:          'Upload Photo',
+    how2:          'AI Analysis',
+    how3:          'See Results',
+    footerDisclaimer: 'For entertainment only. Not scientifically based.',
+    footerPhotoNote:  'Your photo is processed locally and never stored.',
+    footerPrivacy: 'Privacy Policy',
     uploadTitle:   'Upload Your Face Photo',
     uploadSubtitle:'Front-facing photos give the best results',
     uploadIconText:'Select Photo',
@@ -138,12 +146,6 @@ function setLanguage(lang) {
 
   // title needs special handling (spans inside)
   document.getElementById('main-title').innerHTML = t.titleHTML;
-
-  // count badge
-  const countEl = document.getElementById('test-count');
-  const count = countEl ? countEl.textContent : '12,847';
-  document.getElementById('count-badge-text').innerHTML =
-    `${t.countPrefix}<strong id="test-count">${count}</strong>${t.countBadge}`;
 
   // lang button label
   document.getElementById('lang-btn').textContent = t.langBtn;
@@ -402,17 +404,5 @@ function showToast(msg) {
   setTimeout(() => toast.classList.remove("show"), 2500);
 }
 
-// ── fake counter ───────────────────────────────
-function animateCounter() {
-  const el = document.getElementById("test-count");
-  let base = 12847;
-  el.textContent = base.toLocaleString();
-  setInterval(() => {
-    base += Math.floor(Math.random() * 3);
-    el.textContent = base.toLocaleString();
-  }, 4000);
-}
-
 // ── boot ──────────────────────────────────────
 loadModel();
-animateCounter();
