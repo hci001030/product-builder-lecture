@@ -48,6 +48,15 @@ const T = {
     toastLink:     '링크가 복사됐어요!',
     shareText:     (t) => `나는 ${t}! 두부상 vs 아랍상 AI 테스트 해봐`,
     langBtn:       'EN',
+    infoTitle:     '두부상 vs 아랍상이란?',
+    infoDesc:      '두부상과 아랍상은 최근 한국에서 유행하고 있는 관상 테스트입니다. 얼굴의 전체적인 인상, 눈매, 이목구비 배치를 기준으로 두 가지 유형으로 나뉩니다.',
+    infoTofuDesc:  '두부처럼 부드럽고 순한 인상을 가진 얼굴 유형입니다. 전체적으로 둥글고 온화한 이목구비, 편안한 눈빛이 특징입니다. 처음 만나는 사람도 쉽게 마음을 여는 친근한 매력이 있습니다.',
+    infoArabDesc:  '강렬하고 이국적인 인상을 가진 얼굴 유형입니다. 뚜렷한 이목구비, 강한 눈빛, 선명한 윤곽이 특징입니다. 카리스마 넘치는 존재감으로 주위를 압도하는 매력이 있습니다.',
+    infoHowTitle:  '두부상 vs 아랍상 테스트 방법',
+    infoStep1:     '<strong>사진 업로드</strong> — 정면을 바라보는 밝은 얼굴 사진을 선택합니다.',
+    infoStep2:     '<strong>AI 분석</strong> — AI 모델이 얼굴 특징을 자동으로 분석합니다.',
+    infoStep3:     '<strong>결과 확인</strong> — 두부상과 아랍상의 비율을 확인하고 공유하세요.',
+    infoDisclaimer:'이 테스트는 오락 목적으로만 제공되며 과학적 근거가 없습니다. 업로드된 사진은 서버에 저장되지 않으며 기기 내에서만 처리됩니다.',
   },
   en: {
     stampBadge:    'AI Face Type Test',
@@ -91,6 +100,15 @@ const T = {
     toastLink:     'Link copied!',
     shareText:     (t) => `I got ${t}! Try the Tofu vs Arab AI Face Test`,
     langBtn:       '한국어',
+    infoTitle:     'What is Tofu Type vs Arab Type?',
+    infoDesc:      'Tofu Type and Arab Type are trending face personality tests in Korea. Your face is classified into one of two types based on overall impression, eye shape, and facial features.',
+    infoTofuDesc:  'A soft and gentle face type, like tofu. Characterized by rounded, warm features and calm eyes. People feel at ease around you and open up quickly.',
+    infoArabDesc:  'A sharp and intense face type. Defined features, strong gaze, and a striking silhouette are the hallmarks. You command attention with a magnetic charisma.',
+    infoHowTitle:  'How the Test Works',
+    infoStep1:     '<strong>Upload a Photo</strong> — Choose a well-lit, front-facing photo.',
+    infoStep2:     '<strong>AI Analysis</strong> — The AI model analyzes your facial features automatically.',
+    infoStep3:     '<strong>See Results</strong> — Check your Tofu vs Arab ratio and share it!',
+    infoDisclaimer:'This test is for entertainment only and has no scientific basis. Uploaded photos are never stored on a server — all processing happens on your device.',
   }
 };
 
