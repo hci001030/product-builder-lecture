@@ -8,7 +8,7 @@ let currentLang = 'ko';
 const T = {
   ko: {
     stampBadge:    'AI 관상 테스트',
-    titleHTML:     '나의 <span class="t-tofu">두부</span><span class="vs">vs</span><span class="t-arab">아랍</span><br/>비율은?',
+    titleHTML:     '나의 <span class="t-tofu">두부상</span><span class="vs">vs</span><span class="t-arab">아랍상</span><br/>비율은?',
     subtitle:      '사진 한 장으로 AI가 당신의 얼굴을 분석합니다.<br/>과학적 근거보다 재미로 즐겨주세요',
     tofuName:      '두부상',
     tofuDesc:      '순하고 부드러운<br/>얼굴형',
