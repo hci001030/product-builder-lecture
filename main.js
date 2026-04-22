@@ -9,7 +9,7 @@ const T = {
   ko: {
     stampBadge:    'AI 관상 테스트',
     titleHTML:     '나의 <span class="t-tofu">두부상</span><span class="vs">vs</span><span class="t-arab">아랍상</span><br/>비율은?',
-    subtitle:      '사진 한 장으로 AI가 당신의 얼굴을 분석합니다.<br/>과학적 근거보다 재미로 즐겨주세요',
+    subtitle:      '사진 한 장으로 AI가 당신의 얼굴을 분석합니다.<br/>AI 학습을 통해 이 서비스를 제공합니다.',
     tofuName:      '두부상',
     tofuDesc:      '순하고 부드러운<br/>얼굴형',
     arabName:      '아랍상',
@@ -18,7 +18,7 @@ const T = {
     how1:          '사진 업로드',
     how2:          'AI 분석',
     how3:          '결과 확인',
-    footerDisclaimer: '재미 목적의 테스트이며 과학적 근거가 없습니다.',
+    footerDisclaimer: 'AI 학습을 통해 제공되는 관상 테스트입니다.',
     footerPhotoNote:  '업로드한 사진은 기기에서만 처리되며 저장되지 않습니다.',
     footerPrivacy: '개인정보처리방침',
     uploadTitle:   '얼굴 사진을 올려주세요',
@@ -56,12 +56,12 @@ const T = {
     infoStep1:     '<strong>사진 업로드</strong> — 정면을 바라보는 밝은 얼굴 사진을 선택합니다.',
     infoStep2:     '<strong>AI 분석</strong> — AI 모델이 얼굴 특징을 자동으로 분석합니다.',
     infoStep3:     '<strong>결과 확인</strong> — 두부상과 아랍상의 비율을 확인하고 공유하세요.',
-    infoDisclaimer:'이 테스트는 오락 목적으로만 제공되며 과학적 근거가 없습니다. 업로드된 사진은 서버에 저장되지 않으며 기기 내에서만 처리됩니다.',
+    infoDisclaimer:'AI 학습을 통해 제공되는 서비스입니다. 업로드된 사진은 서버에 저장되지 않으며 기기 내에서만 처리됩니다.',
   },
   en: {
     stampBadge:    'AI Face Type Test',
     titleHTML:     'What\'s My <span class="t-tofu">Tofu</span><span class="vs">vs</span><span class="t-arab">Arab</span><br/>Ratio?',
-    subtitle:      'AI analyzes your face from a single photo.<br/>Just for fun — not scientific!',
+    subtitle:      'AI analyzes your face from a single photo.<br/>Powered by AI learning.',
     tofuName:      'Tofu Type',
     tofuDesc:      'Soft & gentle<br/>face type',
     arabName:      'Arab Type',
@@ -108,7 +108,7 @@ const T = {
     infoStep1:     '<strong>Upload a Photo</strong> — Choose a well-lit, front-facing photo.',
     infoStep2:     '<strong>AI Analysis</strong> — The AI model analyzes your facial features automatically.',
     infoStep3:     '<strong>See Results</strong> — Check your Tofu vs Arab ratio and share it!',
-    infoDisclaimer:'This test is for entertainment only and has no scientific basis. Uploaded photos are never stored on a server — all processing happens on your device.',
+    infoDisclaimer:'This service is powered by AI learning. Uploaded photos are never stored on a server — all processing happens on your device.',
   }
 };
 
