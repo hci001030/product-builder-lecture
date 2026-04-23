@@ -8,7 +8,7 @@ let currentLang = 'ko';
 const T = {
   ko: {
     stampBadge:    'AI 관상 테스트',
-    titleHTML:     '나의 <span class="t-tofu">두부상</span><span class="vs">vs</span><span class="t-arab">아랍상</span><br/>비율은?',
+    titleHTML:     '<span class="t-tofu">두부상</span><span class="vs">vs</span><span class="t-arab">아랍상</span><br/>테스트',
     subtitle:      '사진 한 장으로 AI가 당신의 얼굴을 분석합니다.<br/>AI 학습을 통해 이 서비스를 제공합니다.',
     tofuName:      '두부상',
     tofuDesc:      '순하고 부드러운<br/>얼굴형',
@@ -60,7 +60,7 @@ const T = {
   },
   en: {
     stampBadge:    'AI Face Type Test',
-    titleHTML:     'What\'s My <span class="t-tofu">Tofu</span><span class="vs">vs</span><span class="t-arab">Arab</span><br/>Ratio?',
+    titleHTML:     '<span class="t-tofu">Tofu</span><span class="vs">vs</span><span class="t-arab">Arab</span><br/>Test',
     subtitle:      'AI analyzes your face from a single photo.<br/>Powered by AI learning.',
     tofuName:      'Tofu Type',
     tofuDesc:      'Soft & gentle<br/>face type',
