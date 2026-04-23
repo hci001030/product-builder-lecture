@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0f0f0f"/>
+
+  <!-- Subtle glow blobs -->
+  <circle cx="300" cy="315" r="260" fill="#3B82F6" opacity="0.08"/>
+  <circle cx="900" cy="315" r="260" fill="#EAB308" opacity="0.08"/>
+
+  <!-- Divider line -->
+  <line x1="600" y1="80" x2="600" y2="550" stroke="#333" stroke-width="2"/>
+
+  <!-- Tofu icon (left): soft blue circle face -->
+  <circle cx="310" cy="240" r="110" fill="#3B82F6"/>
+  <circle cx="275" cy="225" r="12" fill="#fff"/>
+  <circle cx="345" cy="225" r="12" fill="#fff"/>
+  <path d="M278 268 Q310 292 342 268" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <!-- Arab icon (right): sharp gold diamond face -->
+  <polygon points="890,130 1010,250 890,370 770,250" fill="#EAB308"/>
+  <circle cx="858" cy="237" r="11" fill="#111"/>
+  <circle cx="922" cy="237" r="11" fill="#111"/>
+  <path d="M860 272 Q890 260 920 272" stroke="#111" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+  <!-- Label: 두부상 -->
+  <text x="310" y="410" text-anchor="middle" fill="#3B82F6" font-family="sans-serif" font-size="52" font-weight="bold">두부상</text>
+
+  <!-- Label: 아랍상 -->
+  <text x="890" y="410" text-anchor="middle" fill="#EAB308" font-family="sans-serif" font-size="52" font-weight="bold">아랍상</text>
+
+  <!-- VS badge -->
+  <circle cx="600" cy="250" r="52" fill="#111" stroke="#444" stroke-width="2"/>
+  <text x="600" y="265" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="36" font-weight="bold">VS</text>
+
+  <!-- Bottom title -->
+  <text x="600" y="510" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="44" font-weight="bold">AI 관상 테스트 · 무료</text>
+  <text x="600" y="570" text-anchor="middle" fill="#86EFAC" font-family="sans-serif" font-size="26">product-builder-lecture-8ko.pages.dev</text>
+</svg>
