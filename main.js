@@ -1,4 +1,5 @@
-const MODEL_URL = "https://teachablemachine.withgoogle.com/models/n7v0n5Zew/";
+const MODEL_URL    = "https://teachablemachine.withgoogle.com/models/n7v0n5Zew/";
+const KAKAO_APP_KEY = ''; // 카카오 앱 키 (선택사항) — https://developers.kakao.com > 내 앱 > 앱 키 > JavaScript 키
 
 let model = null;
 let uploadedImageEl = null;
@@ -38,8 +39,10 @@ const T = {
     step3:         '관상 패턴 매칭 중...',
     step4:         '결과 생성 중...',
     resultStamp:   '분석 완료',
-    btnShare:      '결과 공유하기',
-    btnCopy:       '링크 복사하기',
+    shareLabel:    '결과 공유하기',
+    shareBtnKakao: '카카오톡',
+    shareBtnBand:  '밴드',
+    btnCopy:       '링크 복사',
     btnRetry:      '다른 사진으로 다시 테스트하기',
     modelLoading:  'AI 로딩 중...',
     modelReady:    'AI 준비 완료',
@@ -90,7 +93,9 @@ const T = {
     step3:         'Matching face patterns...',
     step4:         'Generating results...',
     resultStamp:   'Analysis Complete',
-    btnShare:      'Share Results',
+    shareLabel:    'Share Your Result',
+    shareBtnKakao: 'KakaoTalk',
+    shareBtnBand:  'Band',
     btnCopy:       'Copy Link',
     btnRetry:      'Try with Another Photo',
     modelLoading:  'Loading AI...',
@@ -375,16 +380,62 @@ function animateNumber(id, target) {
   }, 33);
 }
 
+// ── Kakao SDK loader ───────────────────────────
+async function loadKakaoSDK() {
+  if (window.Kakao) return true;
+  if (!KAKAO_APP_KEY) return false;
+  return new Promise(resolve => {
+    const s = document.createElement('script');
+    s.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
+    s.onload = () => {
+      if (!Kakao.isInitialized()) Kakao.init(KAKAO_APP_KEY);
+      resolve(true);
+    };
+    s.onerror = () => resolve(false);
+    document.head.appendChild(s);
+  });
+}
+
+function getShareText() {
+  const typeName = document.getElementById("result-type-title").textContent;
+  return T[currentLang].shareText(typeName);
+}
+
 // ── share / copy / retry ───────────────────────
-document.getElementById("btn-share").addEventListener("click", () => {
-  const title = document.getElementById("result-type-title").textContent;
-  const text  = T[currentLang].shareText(title);
-  if (navigator.share) {
+document.getElementById("btn-kakao").addEventListener("click", async () => {
+  const text = getShareText();
+  const ok = await loadKakaoSDK();
+  if (ok && window.Kakao?.isInitialized()) {
+    Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: text,
+        description: currentLang === 'ko' ? '두부상 vs 아랍상 AI 관상 테스트' : 'Tofu vs Arab AI Face Test',
+        imageUrl: 'https://product-builder-lecture-8ko.pages.dev/og-image.svg',
+        link: { mobileWebUrl: location.href, webUrl: location.href }
+      },
+      buttons: [{ title: currentLang === 'ko' ? '테스트 하러 가기' : 'Take the test', link: { mobileWebUrl: location.href, webUrl: location.href } }]
+    });
+  } else if (navigator.share) {
     navigator.share({ title: text, text, url: location.href }).catch(() => {});
   } else {
-    copyToClipboard(text + "\n" + location.href);
-    showToast(T[currentLang].toastCopied);
+    copyToClipboard(text + '\n' + location.href);
+    showToast(T[currentLang].toastLink);
   }
+});
+
+document.getElementById("btn-twitter").addEventListener("click", () => {
+  const text = getShareText();
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(location.href)}`, '_blank', 'width=560,height=450');
+});
+
+document.getElementById("btn-facebook").addEventListener("click", () => {
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}`, '_blank', 'width=560,height=450');
+});
+
+document.getElementById("btn-band").addEventListener("click", () => {
+  const text = getShareText();
+  window.open(`https://band.us/plugin/share?body=${encodeURIComponent(text + '\n' + location.href)}&route=${encodeURIComponent(location.href)}`, '_blank', 'width=560,height=450');
 });
 
 document.getElementById("btn-copy").addEventListener("click", () => {
