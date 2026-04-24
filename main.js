@@ -390,9 +390,12 @@ function getShareText() {
 document.getElementById("btn-instagram").addEventListener("click", () => {
   const text = getShareText();
   if (navigator.share) {
+    // 모바일: 네이티브 공유 시트에서 인스타그램 앱 선택 가능
     navigator.share({ title: text, text, url: location.href }).catch(() => {});
   } else {
+    // 데스크탑: 링크 복사 + 인스타그램 팝업 오픈
     copyToClipboard(location.href);
+    window.open('https://www.instagram.com/', '_blank', 'width=480,height=700,noopener,noreferrer');
     showToast(T[currentLang].toastInsta);
   }
 });
