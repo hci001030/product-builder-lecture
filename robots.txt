@@ -1,4 +1,23 @@
 User-agent: *
 Allow: /
 
+# AI search crawlers — explicitly allowed
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
 Sitemap: https://product-builder-lecture-8ko.pages.dev/sitemap.xml
