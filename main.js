@@ -1,5 +1,4 @@
-const MODEL_URL    = "https://teachablemachine.withgoogle.com/models/n7v0n5Zew/";
-const KAKAO_APP_KEY = ''; // 카카오 앱 키 (선택사항) — https://developers.kakao.com > 내 앱 > 앱 키 > JavaScript 키
+const MODEL_URL = "https://teachablemachine.withgoogle.com/models/n7v0n5Zew/";
 
 let model = null;
 let uploadedImageEl = null;
@@ -40,8 +39,9 @@ const T = {
     step4:         '결과 생성 중...',
     resultStamp:   '분석 완료',
     shareLabel:    '결과 공유하기',
-    shareBtnKakao: '카카오톡',
+    shareBtnInsta: '인스타그램',
     shareBtnBand:  '밴드',
+    toastInsta:    '링크 복사 완료! 인스타그램 앱에 붙여넣기 하세요.',
     btnCopy:       '링크 복사',
     btnRetry:      '다른 사진으로 다시 테스트하기',
     modelLoading:  'AI 로딩 중...',
@@ -94,8 +94,9 @@ const T = {
     step4:         'Generating results...',
     resultStamp:   'Analysis Complete',
     shareLabel:    'Share Your Result',
-    shareBtnKakao: 'KakaoTalk',
+    shareBtnInsta: 'Instagram',
     shareBtnBand:  'Band',
+    toastInsta:    'Link copied! Paste it in the Instagram app.',
     btnCopy:       'Copy Link',
     btnRetry:      'Try with Another Photo',
     modelLoading:  'Loading AI...',
@@ -380,47 +381,19 @@ function animateNumber(id, target) {
   }, 33);
 }
 
-// ── Kakao SDK loader ───────────────────────────
-async function loadKakaoSDK() {
-  if (window.Kakao) return true;
-  if (!KAKAO_APP_KEY) return false;
-  return new Promise(resolve => {
-    const s = document.createElement('script');
-    s.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
-    s.onload = () => {
-      if (!Kakao.isInitialized()) Kakao.init(KAKAO_APP_KEY);
-      resolve(true);
-    };
-    s.onerror = () => resolve(false);
-    document.head.appendChild(s);
-  });
-}
-
 function getShareText() {
   const typeName = document.getElementById("result-type-title").textContent;
   return T[currentLang].shareText(typeName);
 }
 
 // ── share / copy / retry ───────────────────────
-document.getElementById("btn-kakao").addEventListener("click", async () => {
+document.getElementById("btn-instagram").addEventListener("click", () => {
   const text = getShareText();
-  const ok = await loadKakaoSDK();
-  if (ok && window.Kakao?.isInitialized()) {
-    Kakao.Share.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: text,
-        description: currentLang === 'ko' ? '두부상 vs 아랍상 AI 관상 테스트' : 'Tofu vs Arab AI Face Test',
-        imageUrl: 'https://product-builder-lecture-8ko.pages.dev/og-image.svg',
-        link: { mobileWebUrl: location.href, webUrl: location.href }
-      },
-      buttons: [{ title: currentLang === 'ko' ? '테스트 하러 가기' : 'Take the test', link: { mobileWebUrl: location.href, webUrl: location.href } }]
-    });
-  } else if (navigator.share) {
+  if (navigator.share) {
     navigator.share({ title: text, text, url: location.href }).catch(() => {});
   } else {
-    copyToClipboard(text + '\n' + location.href);
-    showToast(T[currentLang].toastLink);
+    copyToClipboard(location.href);
+    showToast(T[currentLang].toastInsta);
   }
 });
 
